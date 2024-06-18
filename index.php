@@ -40,8 +40,7 @@ $hotels = [
 
 ];
 
-
-
+// var_dump($hotels)
 // foreach ($hotels as $key => $hotelList) {
 //     echo '<hr>';
 //     foreach ($hotelList as $key => $hotel) {
@@ -49,7 +48,27 @@ $hotels = [
 //     }
 // }
 
-// ?>
+
+// assegno alla variabile il valore della select:
+$park_selected = $_GET['parking'];
+// definisco una fariabile dove ciclare gli hotel filtrati dalla select:
+$filteredHotels = [];
+
+// condizione per filtrare gli hotel:
+if ($park_selected !== '') {
+    $park_select = $park_selected === '1' ? true : false;
+    foreach ($hotels as $hotelList) {
+        if ($hotelList['parking'] == $park_select) {
+            $filteredHotels[] = $hotelList;
+        }
+    }
+} else {
+    $filteredHotels = $hotels;
+}
+
+// var_dump($filteredHotels);
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -68,6 +87,24 @@ $hotels = [
     <section class="mt-5">
         <div class="container">
             <h1 class="text-center mb-5">Hotels</h1>
+
+            <!-- Form per il filtro -->
+            <form method="GET" action="">  
+                <div class="d-flex my-5">
+                    <div class="form-group col-3">
+                        <label class="mb-2 mt-5" for="parking">Filtro Parcheggio:</label>
+                        <select name="parking" id="parking" class="form-control blue-select">
+                            <option value="">Tutti</option>
+                            <option value="1" >Sì</option>
+                            <option value="0" >No</option>
+                        </select>
+                    </div>
+                    <div class="col-1 align-content-end ps-3">
+                        <button type="submit" class="btn btn-primary">Filtra</button>
+                    </div>
+                </div>
+            </form>
+
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -80,17 +117,17 @@ $hotels = [
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($hotels as $key => $hotelList) : ?>
-                    <tr>
-                        <th scope="row"><?php echo $key + 1; ?></th>
-                        <?php foreach ($hotelList as $key => $hotel) : ?>
-                            <?php if($key === 'parking') : ?>
-                                <td><?php echo $hotel ? 'Sì' : 'No'; ?></td>
-                            <?php else : ?>
-                                <td><?php echo $hotel; ?></td>
-                            <?php endif; ?>
-                        <?php endforeach; ?>
-                    </tr>
+                    <?php foreach ($filteredHotels as $key => $hotelList) : ?>
+                        <tr>
+                            <th scope="row"><?php echo $key + 1; ?></th>
+                            <?php foreach ($hotelList as $key => $hotel) : ?>
+                                <?php if ($key === 'parking') : ?>
+                                    <td><?php echo $hotel ? 'Sì' : 'No'; ?></td>
+                                <?php else : ?>
+                                    <td><?php echo $hotel; ?></td>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
