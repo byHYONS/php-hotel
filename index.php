@@ -42,14 +42,14 @@ $hotels = [
 
 
 
-foreach ($hotels as $key => $hotelList) {
-    echo '<hr>';
-    foreach ($hotelList as $key => $hotel) {
-        echo $hotel;
-    }
-}
+// foreach ($hotels as $key => $hotelList) {
+//     echo '<hr>';
+//     foreach ($hotelList as $key => $hotel) {
+//         echo $hotel;
+//     }
+// }
 
-?>
+// ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -65,9 +65,9 @@ foreach ($hotels as $key => $hotelList) {
 </head>
 
 <body>
-    <section>
+    <section class="mt-5">
         <div class="container">
-            <h1 class="text-center">Hotels</h1>
+            <h1 class="text-center mb-5">Hotels</h1>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -80,15 +80,18 @@ foreach ($hotels as $key => $hotelList) {
                     </tr>
                 </thead>
                 <tbody>
+                    <?php foreach ($hotels as $key => $hotelList) : ?>
                     <tr>
-                        <?php
-                        foreach ($hotels as $key => $hotelList) : ?>
-                        <th scope="row"><?php echo $key ?></th>
-                            <?php foreach ($hotelList as $key => $hotel) : ?>
-                            <td><?php echo $hotel ?></td>                           
-                            <?php endforeach ?>
-                        <?php endforeach; ?>                   
+                        <th scope="row"><?php echo $key + 1; ?></th>
+                        <?php foreach ($hotelList as $key => $hotel) : ?>
+                            <?php if($key === 'parking') : ?>
+                                <td><?php echo $hotel ? 'Sì' : 'No'; ?></td>
+                            <?php else : ?>
+                                <td><?php echo $hotel; ?></td>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
                     </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
 
