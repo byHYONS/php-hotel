@@ -40,11 +40,13 @@ $hotels = [
 
 ];
 
-var_dump($hotels);
 
-foreach($hotels as $key => $hotel) {
-    echo $key;
-    
+
+foreach ($hotels as $key => $hotelList) {
+    echo '<hr>';
+    foreach ($hotelList as $key => $hotel) {
+        echo $hotel;
+    }
 }
 
 ?>
@@ -56,15 +58,18 @@ foreach($hotels as $key => $hotel) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- boostrap -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js" 
-    integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ==" 
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- css -->
     <link rel="stylesheet" href="./style.css" type="text/css">
     <title>PHP Hotel</title>
 </head>
 
 <body>
+    <section>
+        <h1 class="text-center">Hotels</h1>
+        
+    </section>
 
 </body>
 
