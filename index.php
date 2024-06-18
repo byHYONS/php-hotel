@@ -58,8 +58,7 @@ foreach ($hotels as $key => $hotelList) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- boostrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
-    rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- css -->
     <link rel="stylesheet" href="./style.css" type="text/css">
     <title>PHP Hotel</title>
@@ -67,8 +66,33 @@ foreach ($hotels as $key => $hotelList) {
 
 <body>
     <section>
-        <h1 class="text-center">Hotels</h1>
-        
+        <div class="container">
+            <h1 class="text-center">Hotels</h1>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name Hotel</th>
+                        <th scope="col">Descriptio</th>
+                        <th scope="col">Parking</th>
+                        <th scope="col">Vote</th>
+                        <th scope="col">Distance to Center</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <?php
+                        foreach ($hotels as $key => $hotelList) : ?>
+                        <th scope="row"><?php echo $key ?></th>
+                            <?php foreach ($hotelList as $key => $hotel) : ?>
+                            <td><?php echo $hotel ?></td>                           
+                            <?php endforeach ?>
+                        <?php endforeach; ?>                   
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
     </section>
 
 </body>
