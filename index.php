@@ -89,14 +89,14 @@ if ($park_selected !== '') {
             <h1 class="text-center mb-5">Hotels</h1>
 
             <!-- Form per il filtro -->
-            <form method="GET" action="">  
+            <form method="GET" action="">
                 <div class="d-flex my-5">
                     <div class="form-group col-3">
                         <label class="mb-2 mt-5" for="parking">Filtro Parcheggio:</label>
                         <select name="parking" id="parking" class="form-control blue-select">
                             <option value="">Tutti</option>
-                            <option value="1" >Sì</option>
-                            <option value="0" >No</option>
+                            <option value="1" <?php if (isset($_GET['parking']) && $_GET['parking'] == '1') echo 'selected'; ?>>Sì</option>
+                            <option value="0" <?php if (isset($_GET['parking']) && $_GET['parking'] == '0') echo 'selected'; ?>>No</option>
                         </select>
                     </div>
                     <div class="col-1 align-content-end ps-3">
